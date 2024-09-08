@@ -13,6 +13,7 @@ app.use(express.static(path.join(__dirname, 'views')));
 app.set("view engine", "ejs",);
 app.engine('ejs', require('ejs').__express);
 
+app.set("views", [path.join(__dirname, 'views')]);
 const port = process.env.PORT;
 app.listen(port, ()=>{
         // console.log('Server is now live at --- %chttp://localhost:'+port, 'background: #222; color: #bada55'); //chrome
