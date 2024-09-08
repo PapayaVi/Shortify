@@ -11,10 +11,7 @@ app.use(express.static('public'));
 app.use(express.static('views'));
 
 app.set("view engine", "ejs",);
-app.set("views", ['views', 'views/login-system']);
 
-
-console.log(__dirname)
 //////////////////////////////////////////////////////////////////////  HOME
 app.get('/', (req, res) => {
         res.render("home");
