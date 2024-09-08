@@ -14,7 +14,7 @@ app.use(express.static('public'));
 
 
 app.set("view engine", "ejs",);
-app.set("views", './views');
+app.set("views", path.join(__dirname,'./views'));
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
 app.get("/test", (req, res) => {
