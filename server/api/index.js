@@ -15,12 +15,9 @@ app.use(express.static('public'));
 
 app.set("view engine", "ejs",);
 app.set("views", path.join(__dirname,'/../views'));
-
-app.get("/", (req, res) => res.send("Express on Vercel"));
-
 //////////////////////////////////////////////////////////////////////  HOME
 const home = require('../routes/home')
-app.use('/home', home)
+app.use('/', home)
 //////////////////////////////////////////////////////////////////////  BITLY
 const bitly = require('../routes/bitlyAPI')
 app.use('/bitly', bitly)
