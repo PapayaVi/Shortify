@@ -16,13 +16,10 @@ app.set("views", ['views', 'views/login-system']);
 
 console.log(__dirname)
 //////////////////////////////////////////////////////////////////////  HOME
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
         res.render("home");
 })
 //////////////////////////////////////////////////////////////////////  BITLY
-app.get('/home', (req, res) => {
-        res.render("home");
-})
 // const bitly = require('../routes/bitlyAPI')
 const shorten = async (token, link) => {
         try{
