@@ -11,6 +11,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'views')));
 
 app.set("view engine", "ejs",);
+app.engine('ejs', require('ejs').__express);
 
 const port = process.env.PORT;
 app.listen(port, ()=>{
