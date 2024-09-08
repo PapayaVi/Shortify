@@ -10,11 +10,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(express.static('public'));
-app.use(express.static('views'));
+// app.use(express.static('views'));
 
 
 app.set("view engine", "ejs",);
-// app.set("views", './views');
+app.set("views", './views');
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
 app.get("/test", (req, res) => {
