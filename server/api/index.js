@@ -2,9 +2,8 @@ const express = require('express');
 const app = express();
 
 //////////////////////////////////////////////////////////////////////  HOME
-app.get('/', (req, res) => {
-        res.render("home");
-})
+const home = require('../routes/home')
+app.use('/', home)
 //////////////////////////////////////////////////////////////////////  BITLY
 const bitly = require('../routes/bitlyAPI')
 app.use('/bitly', bitly)
