@@ -17,12 +17,7 @@ app.set("view engine", "ejs",);
 app.set("views", path.join(__dirname,'/../views'));
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
-app.get("/test", (req, res) => {
-  res.send("hello")
-})
-app.get("/test2", (req, res) => {
-        res.render("home")
-})
+
 //////////////////////////////////////////////////////////////////////  HOME
 const home = require('../routes/home')
 app.use('/home', home)
