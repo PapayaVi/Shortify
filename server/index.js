@@ -1,6 +1,16 @@
 const app  = require("./api/index")
+
+const path = require("path");
+const express = require('express');
+
 require('dotenv').config()
 
+
+
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'views')));
+
+app.set("view engine", "ejs",);
 
 const port = process.env.PORT;
 app.listen(port, ()=>{

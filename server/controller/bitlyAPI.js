@@ -1,4 +1,5 @@
 const axios = require('axios');
+require('dotenv').config()
 
 const shorten = async (token, link) => {
         try{
@@ -15,9 +16,10 @@ const shorten = async (token, link) => {
 exports.shortenLink = (req, res) => {
         var url = req.query.url
         shorten(process.env.BITLYAPITOKEN, url).then(result => {
-                res.send(result.link)
+                console.log(result)
         }).catch(err => {
                 console.log(err);
                 res.sendStatus(501);
         });
 };
+// res.send(result.link)
