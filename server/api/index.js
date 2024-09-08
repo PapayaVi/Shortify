@@ -3,6 +3,7 @@ const express = require('express');
 const app  = express()
 require('dotenv').config()
 const path = require("path");
+const axios = require('axios');
 const bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -18,6 +19,9 @@ app.set("view engine", "ejs",);
 app.get("/", (req, res) => res.send("Express on Vercel"));
 app.get("/test", (req, res) => {
   res.send("hello")
+})
+app.get("/test2", (req, res) => {
+        res.render("home")
 })
 //////////////////////////////////////////////////////////////////////  HOME
 const home = require('../routes/home')
