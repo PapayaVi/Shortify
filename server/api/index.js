@@ -16,6 +16,9 @@ app.set("view engine", "ejs",);
 app.set("views", 'views');
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
+app.get("/test", (req, res) => {
+  res.render("home")
+})
 //////////////////////////////////////////////////////////////////////  HOME
 const home = require('../routes/home')
 app.use('/home', home)
