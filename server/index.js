@@ -1,10 +1,12 @@
 const app  = require("./api/index")
-
-const path = require("path");
 const express = require('express');
-
 require('dotenv').config()
 
+const path = require("path");
+const bodyParser = require("body-parser");
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 
 app.use(express.static(path.join(__dirname, 'public')));
