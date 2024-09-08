@@ -13,7 +13,7 @@ app.use(express.static('views'));
 
 
 app.set("view engine", "ejs",);
-app.set("views", '../views');
+app.set("views", './views');
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
 app.get("/test", (req, res) => {
@@ -27,7 +27,7 @@ const bitly = require('../routes/bitlyAPI')
 app.use('/bitly', bitly)
 
 const port = process.env.PORT;
-app.listen(port, ()=>{
+app.listen(3000 || port, ()=>{
         // console.log('Server is now live at --- %chttp://localhost:'+port, 'background: #222; color: #bada55'); //chrome
         console.log('Server is now live at --- \u001b[1;32m http://localhost:'+port)
 })
