@@ -10,14 +10,11 @@ const shorten = async (token, link) => {
         }catch(error){
                 console.log("error :" + error);
         }
-      
-   
 }
 
 exports.shortenLink = (req, res) => {
         var url = req.query.url
         shorten(process.env.BITLYAPITOKEN, url).then(result => {
-                // do some processing of result into finalData
                 res.send(result.link)
         }).catch(err => {
                 console.log(err);

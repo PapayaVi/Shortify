@@ -1,9 +1,7 @@
 const express = require('express');
 const bodyParser = require("body-parser");
 const path = require("path");
-
-
-// const { shorten }= require('./js/bitly-API')
+const axios = require('axios');
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -22,7 +20,30 @@ app.get('/home', (req, res) => {
         res.render("home");
 })
 //////////////////////////////////////////////////////////////////////  BITLY
-const bitly = require('../routes/bitlyAPI')
-app.use('/bitly', bitly);
+app.get('/home', (req, res) => {
+        res.render("home");
+})
+// const bitly = require('../routes/bitlyAPI')
+const shorten = async (token, link) => {
+        try{
+                const resp = await axios.post(`https://api-ssl.bitly.com/v4/bitlinks`,
+                        {"long_url":link},
+                        {headers:{'Authorization':`Bearer ${token}`}
+                });
+                return resp.data;
+        }catch(error){
+                console.log("error :" + error);
+        }
+}
 
+
+app.get('/bitly', (req, res) => {
+        var url = req.query.url
+        shorten(process.env.BITLYAPITOKEN, url).then(result => {
+                res.send(result.link)
+        }).catch(err => {
+                console.log(err);
+                res.sendStatus(501);
+        });
+})
 module.exports = app;
