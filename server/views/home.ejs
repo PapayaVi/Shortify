@@ -140,18 +140,15 @@
                                                 confirmButtonText: 
                                                 `
                                                 <i class="fa fa-thumbs-up"></i> Great!
-                                                `,
-                                                // imageUrl: "https://i.pinimg.com/564x/50/0b/2c/500b2cf695608969408b87c4f3e11321.jpg",
-                                                // imageWidth: 564,
-                                                // imageHeight: 544,
-                                                // imageAlt: "Custom image"
+                                                `
                                         });
                                         
                                 }).catch(function (error){
+                                        const err_message = error.status == 429 ? "Request limit reached!" : "Server error!";
                                         Swal.fire({
                                                 icon: "error",
                                                 title: "Oops...",
-                                                text: "Something went wrong!",
+                                                text: err_message,
                                                 footer: '<a href="#">Why do I have this issue?</a>'
                                         });
                                 });

@@ -5,16 +5,23 @@ require('dotenv').config()
 const path = require("path");
 const axios = require('axios');
 const bodyParser = require("body-parser");
+const rateLimit = require('express-rate-limit');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(express.static('public'));
-// app.use(express.static('views'));
-
 
 app.set("view engine", "ejs",);
 app.set("views", path.join(__dirname,'/../views'));
+
+const limiter = rateLimit({
+        windowMs: 3 * 24 * 60 * 60 * 1000, // 1 request per 3 days
+        max: 10,
+        delayMs: 0
+});
+
+
 //////////////////////////////////////////////////////////////////////  HOME
 const home = require('../routes/home')
 app.use('/', home)

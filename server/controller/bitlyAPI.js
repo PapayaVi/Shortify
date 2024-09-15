@@ -9,7 +9,7 @@ const shorten = async (token, link) => {
                 });
                 return resp.data;
         }catch(error){
-                console.log("error :" + error);
+                console.log("Error : "+error.status);
         }
 }
 
@@ -19,12 +19,9 @@ exports.shortenLink = (req, res) => {
                if(typeof result !== "undefined"){
                         res.send(result.link)
                }else{
-                        console.log("error")
-                        res.sendStatus(501);
+                        res.sendStatus(429);
                }
         }).catch(err => {
-                console.log(err);
-                res.sendStatus(501);
+                res.sendStatus(500);
         });
 };
-// res.send(result.link)
